@@ -23,7 +23,7 @@ if(! $koneksi )
 	}
 
 //sambungkan ke database...
-mysql_select_db('test_db');
+mysql_select_db('karyawan');
 
 
 

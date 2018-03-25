@@ -25,6 +25,19 @@ if(! $koneksi )
 //sambungkan ke database...
 mysql_select_db('karyawan');
 
+$sql = 'CREATE Database karyawan_db';
+$buatdb = mysql_query( $sql, $koneksi );
+
+$sql = 'CREATE TABLE karyawan( '.
+       'id_karyawan INT NOT NULL AUTO_INCREMENT, '.
+       'nama_karyawan VARCHAR(20) NOT NULL, '.
+       'alm_karyawan  VARCHAR(20) NOT NULL, '.
+       'gaji_karyawan   INT NOT NULL, '.
+       'tgl_gabung    timestamp(14) NOT NULL, '.
+       'primary key ( id_karyawan ))';
+ 
+mysql_select_db('karyawan_db');
+$buattabel = mysql_query( $sql, $koneksi );
 
 
 
@@ -32,7 +45,22 @@ mysql_select_db('karyawan');
 
 //ambil nilai
 $aksi = $_REQUEST['aksi'];
-
+//echo "<table border='1' width='500'>";
+//echo "<tr>
+	//		<td>ID</td>.
+		//	<td>NAMA</td>.
+	//		<td>GAJI</td>.
+		//  </tr>";
+while($row = mysql_fetch_array($ambildata, MYSQL_NUM))
+{
+    echo "<tr>
+			<td>{$row[0]}</td>.
+			<td>{$row[1]}</td>.
+			<td>{$row[2]}</td>.
+		  </tr>";
+} 
+//echo "</table>";
+mysql_free_result($ambildata);
 
 
 
